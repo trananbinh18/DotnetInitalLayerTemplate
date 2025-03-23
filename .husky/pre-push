@@ -1,0 +1,37 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+## husky task runner examples -------------------
+## Note : for local installation use 'dotnet' prefix. e.g. 'dotnet husky'
+
+## run all tasks
+#husky run
+
+### run all tasks with group: 'group-name'
+#husky run --group group-name
+
+## run task with name: 'task-name'
+#husky run --name task-name
+
+## pass hook arguments to task
+#husky run --args "$1" "$2"
+
+## or put your custom commands -------------------
+#echo 'Husky.Net is awesome!'
+
+
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+if [ "$BRANCH" = "staging" ] || [ "$BRANCH" = "main" ]; then
+  echo "Running build-project task before push to $BRANCH..."
+  dotnet husky run --name "build-project"
+
+  if [ $? -ne 0 ]; then
+    echo "❌ Build-project task failed. Push aborted."
+    exit 1
+  else
+    echo "✅✅✅ Validate Build Successfully !!!"
+  fi
+else
+  echo "Skipping build-project task for branch $BRANCH."
+fi

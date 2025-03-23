@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
@@ -65,10 +66,15 @@ namespace WebAPI.Extensions
             services.AddSwaggerGen(option =>
             {
                 option.SwaggerDoc("v1",
-                    new Microsoft.OpenApi.Models.OpenApiInfo
+                    new OpenApiInfo
                     {
-                        Title = "Web Demo"
-                    });
+                        Title = "WebAPI (Project Name)",
+                        Version = "v1"
+                    }
+                );
+
+                var filePath = Path.Combine(System.AppContext.BaseDirectory, "WebAPI.xml");
+                option.IncludeXmlComments(filePath);
 
                 option.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
                 {
@@ -91,6 +97,8 @@ namespace WebAPI.Extensions
                      new string[] { }
                    }
                });
+
+
             });
         }
     }
