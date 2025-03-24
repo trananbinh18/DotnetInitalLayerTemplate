@@ -1,17 +1,17 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Application.Models.Responses;
-using Application.Services.Implementations;
+using Application.Services.Interfaces;
 using AutoMapper;
 using Persistence.Repositories.Interfaces;
 
-namespace Application.Services.Interfaces
+namespace Application.Services.Implementations
 {
-    public class PostServices : IPostServices
+    public class PostService : IPostService
     {
         private readonly IPostRepository _postRepository;
         private readonly IMapper _autoMapper;
-        public PostServices(IPostRepository postRepository, IMapper mapper) {
+        public PostService(IPostRepository postRepository, IMapper mapper) {
             _postRepository = postRepository;
             _autoMapper = mapper;
         }

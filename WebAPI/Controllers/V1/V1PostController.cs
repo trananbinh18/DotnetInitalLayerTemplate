@@ -1,20 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Application.Services.Implementations;
-using Microsoft.AspNetCore.Authorization;
+﻿using System.Threading.Tasks;
+using Application.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 
 namespace WebAPI.Controllers
 {
     [ApiController]
-    [Route("api/post/v1")]
-    public class PostV1Controller : ControllerBase
+    [Route("api/v1/posts")]
+    public class V1PostController : ControllerBase
     {
 
-        private readonly IPostServices _postServices;
-        public PostV1Controller(IPostServices postServices)
+        private readonly IPostService _postServices;
+        public V1PostController(IPostService postServices)
         {
             _postServices = postServices;
         }

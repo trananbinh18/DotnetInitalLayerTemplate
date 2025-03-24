@@ -68,7 +68,7 @@ namespace WebAPI.Extensions
                 option.SwaggerDoc("v1",
                     new OpenApiInfo
                     {
-                        Title = "WebAPI (Project Name)",
+                        Title = "WebAPI (Blogic Dashboard API)",
                         Version = "v1"
                     }
                 );

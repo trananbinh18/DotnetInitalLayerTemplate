@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Application.Models.Requests;
 using Application.Models.Responses;
 
-namespace Application.Services.Implementations
+namespace Application.Services.Interfaces
 {
-    public interface IPostServices
+    public interface IPostService
     {
         Task<List<PostResponse>> GetPostsAsync(string searchText);
     }

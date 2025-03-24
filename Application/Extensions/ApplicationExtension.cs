@@ -11,7 +11,7 @@ namespace Application.Extensions
         public static void AddApplicationServices(this IServiceCollection serviceCollection, IConfiguration configuration)
         {
             serviceCollection.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            serviceCollection.AddScoped<IPostServices, PostServices>();
+            serviceCollection.AddScoped<IPostService, PostService>();
         }
     }
 }

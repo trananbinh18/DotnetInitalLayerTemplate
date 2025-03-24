@@ -11,7 +11,8 @@ namespace Persistence.Migrations
             Create.Table("Post")
                 .WithColumn("Id").AsString().PrimaryKey()
                 .WithColumn("Title").AsString()
-                .WithColumn("Description").AsString();
+                .WithColumn
+                ("Description").AsString();
         }
 
         public override void Down()
